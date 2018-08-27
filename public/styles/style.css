@@ -131,7 +131,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+.wrapper {
+  max-width: 1200px;
+  width: 95%;
+  margin: 0 auto;
+  text-align: center; }
+
 #mapid {
-  height: 500px;
-  width: 80%;
-  margin: 0 auto; }
+  height: 500px; }
