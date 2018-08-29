@@ -138,4 +138,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   text-align: center; }
 
 #mapid {
-  height: 500px; }
+  height: 500px;
+  width: 100%; }
+
+.weather {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+footer {
+  background-color: black;
+  padding: 20px;
+  margin-top: 100px; }
+  footer p, footer a {
+    color: white;
+    margin: 0;
+    text-decoration: none; }
