@@ -5,8 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>🏃‍♂️🏃‍♀️</title>
-	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
-   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+  <link rel="stylesheet" href="public/styles/Control.Coordinates.css">
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
@@ -14,13 +15,16 @@
 	<div class="wrapper">
 		<h1>🏃‍♂️🏃‍♀️ Project Run(a)way 🏃‍♂️🏃‍♀️</h1>
 		
+		<button class="setRoute">Get route</button>
+		<button class="clear">Clear route</button>
+
 		<div class="infoDisplay">
 
 			<div class="weather">
 				<p class="currentTemp">Current Temp: <span></span></p>
 				<p class="currentFeelsLike">Feels Like: <span></span></p>
 			</div>
-			
+
 			<div id="mapid"></div>
 		</div>
 	</div>
@@ -36,6 +40,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+	<script src="public/scripts/Control.Coordinates.js"></script>
 	<script src="public/scripts/main.js"></script>
 </body>
 </html>

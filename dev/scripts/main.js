@@ -16,13 +16,20 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 		id: 'mapbox.streets',
 		accessToken: app.apiKeyMapbox
 	}).addTo(mymap);
-	L.Routing.control({
-	  waypoints: [
-	    L.latLng(lat, lng),
-	    L.latLng(43.6426, -79.3871)
-	  ]
-	}).addTo(mymap);
-	// app.getEndWaypoint(lat, lng);
+
+	$('.setRoute').on('click', function(){
+		L.Routing.control({
+		  waypoints: [
+		    L.latLng(lat, lng),
+		    L.latLng(43.6426, -79.3871) // these co-ords need to be grabbed from another function?
+		  ]
+		}).addTo(mymap);
+	});
+
+	$('.clear').on('click', function(){
+		L.Routing.control().removeFrom(mymap);
+	});
+
 };
 
 app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
@@ -40,7 +47,6 @@ app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
 	});
 };
 
-
 app.fetchCoordinates = function(){
 	navigator.geolocation.getCurrentPosition(function(position){
 		const lat = position.coords.latitude;
@@ -48,11 +54,8 @@ app.fetchCoordinates = function(){
 		console.log(position)
 		app.fetchMap(lat, lng);
 		app.fetchWeather(lat, lng);
-		// app.getEndWaypoint(lat, lng);
 	});
 };
-
-
 
 app.init = function(){
 	app.fetchCoordinates();
