@@ -30,6 +30,12 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 		L.Routing.control().removeFrom(mymap);
 	});
 
+	var c = new L.Control.Coordinates();
+	c.addTo(mymap);
+	mymap.on('click', function(e) {
+		c.setCoordinates(e);
+		console.log(c);
+	});	
 };
 
 app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
