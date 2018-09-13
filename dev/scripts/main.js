@@ -17,11 +17,13 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 		accessToken: app.apiKeyMapbox
 	}).addTo(mymap);
 
+	const endRoute = [];
+
 	$('.setRoute').on('click', function(){
 		L.Routing.control({
 		  waypoints: [
 		    L.latLng(lat, lng),
-		    L.latLng(43.6426, -79.3871) // these co-ords need to be grabbed from another function?
+		    L.latLng(endRoute[0], endRoute[1]) // these co-ords need to be grabbed from another function?
 		  ]
 		}).addTo(mymap);
 	});
@@ -34,7 +36,14 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 	c.addTo(mymap);
 	mymap.on('click', function(e) {
 		c.setCoordinates(e);
-		console.log(c);
+		const endLat = e.latlng.lat;
+		const endLng = e.latlng.lng;
+		console.log(e);
+		console.log(endLat, endLng);
+		endRoute.push(endLat);
+		endRoute.push(endLng);
+		console.log(endRoute);
+
 	});	
 };
 
