@@ -17,34 +17,23 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 		accessToken: app.apiKeyMapbox
 	}).addTo(mymap);
 
-	const endRoute = [];
-
-	$('.setRoute').on('click', function(){
-		L.Routing.control({
-		  waypoints: [
-		    L.latLng(lat, lng),
-		    L.latLng(endRoute[0], endRoute[1]) // these co-ords need to be grabbed from another function?
-		  ]
-		}).addTo(mymap);
-	});
-
-	$('.clear').on('click', function(){
-		L.Routing.control().removeFrom(mymap);
-	});
-
 	var c = new L.Control.Coordinates();
 	c.addTo(mymap);
 	mymap.on('click', function(e) {
 		c.setCoordinates(e);
 		const endLat = e.latlng.lat;
 		const endLng = e.latlng.lng;
-		console.log(e);
-		console.log(endLat, endLng);
+		const endRoute = [];
 		endRoute.push(endLat);
 		endRoute.push(endLng);
 		console.log(endRoute);
-
-	});	
+		L.Routing.control({
+		  waypoints: [
+		    L.latLng(lat, lng),
+		    L.latLng(endRoute[0], endRoute[1])
+		  ]
+		}).addTo(mymap);
+	});
 };
 
 app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
