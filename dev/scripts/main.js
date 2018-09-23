@@ -1,7 +1,6 @@
 const app = {};
 
 app.apiKeyMapbox = 'pk.eyJ1Ijoiam9uYXRoYW5ob3kiLCJhIjoiY2psOXNtN29tMGVzNDNrbzV6MDdkajZnbyJ9.uM-tD0Q7WPAZUdT_0y9zqg';
-app.apiKeyMapQuest = 'WTMeWiTixADSCe9r4PjmwyuXzjighpwk';
 app.apiKeyDarkSky = 'aabc3958afb1ab39dcbe55a9d3801b80';
 
 app.fetchMap = function(lat = 43.6532, lng = -79.3832){
@@ -24,9 +23,7 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 		const endLat = e.latlng.lat;
 		const endLng = e.latlng.lng;
 		const endRoute = [];
-		endRoute.push(endLat);
-		endRoute.push(endLng);
-		console.log(endRoute);
+		endRoute.push(endLat, endLng);
 		L.Routing.control({
 		  waypoints: [
 		    L.latLng(lat, lng),
@@ -43,21 +40,38 @@ app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
 		method: 'GET'
 	}).then((data) => {
 		console.log(data);
+		const timeOfRun = $('#timeOfRun').val();
 		const currentTemp = Math.floor(data.currently.temperature);
 		const currentFeelsLike = Math.floor(data.currently.apparentTemperature);
+		const oneHourTemp = Math.floor(data.hourly.data[1].apparentTemperature);
+		const oneHourFeelsLike = Math.floor(data.hourly.data[1].temperature);
+		const twoHourTemp = Math.floor(data.hourly.data[2].apparentTemperature);
+		const twoHourFeelsLike = Math.floor(data.hourly.data[2].temperature);
 		const degrees = '&deg;C';
-		$('.currentTemp span').append(`${currentTemp} ${degrees}`);
-		$('.currentFeelsLike span').append(`${currentFeelsLike} ${degrees}`);
+		const displayTemp = $('.temp span');
+		const displayFeelsLike = $('.feelsLike span');
+		if (timeOfRun === 'now') {
+			displayTemp.append(`${currentTemp} ${degrees}`);
+			displayFeelsLike.append(`${currentFeelsLike} ${degrees}`);
+		} else if (timeOfRun === '1hour') {
+			displayTemp.append(`${oneHourTemp} ${degrees}`);
+			displayFeelsLike.append(`${oneHourFeelsLike} ${degrees}`);
+		} else if (timeOfRun === '2hour') {
+			displayTemp.append(`${twoHourTemp} ${degrees}`);
+			displayFeelsLike.append(`${twoHourFeelsLike} ${degrees}`);
+		};
 	});
 };
 
 app.fetchCoordinates = function(){
-	navigator.geolocation.getCurrentPosition(function(position){
-		const lat = position.coords.latitude;
-		const lng = position.coords.longitude;
-		console.log(position)
-		app.fetchMap(lat, lng);
-		app.fetchWeather(lat, lng);
+	$('.getInfo').on('click', function(){
+		navigator.geolocation.getCurrentPosition(function(position){
+			const lat = position.coords.latitude;
+			const lng = position.coords.longitude;
+			console.log(position)
+			app.fetchMap(lat, lng);
+			app.fetchWeather(lat, lng);
+		});
 	});
 };
 

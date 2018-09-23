@@ -131,6 +131,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+html {
+  font-size: 62.5%; }
+
+body {
+  background: skyblue; }
+
 .wrapper {
   max-width: 1200px;
   width: 95%;
@@ -156,3 +162,24 @@ footer {
     color: white;
     margin: 0;
     text-decoration: none; }
+
+h1, h2 {
+  font-family: 'Pacifico', cursive;
+  color: white; }
+
+h1 {
+  font-size: 7rem; }
+
+h2 {
+  font-size: 3.5rem; }
+
+p, span, button, select, li, label, a {
+  font-size: 1.6rem; }
+
+li p {
+  margin: 0; }
+
+ol {
+  list-style: inside;
+  padding: 0;
+  list-style-type: decimal; }
