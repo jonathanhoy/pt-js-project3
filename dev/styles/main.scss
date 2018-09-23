@@ -6,7 +6,8 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 // font-family: 'Pacifico', cursive;
-// font-family: 'Amatic SC', cursive;
+// font-family: 'Oswald', sans-serif;
+
 
 html {
 	font-size: 62.5%;
@@ -14,6 +15,98 @@ html {
 
 body {
 	background: skyblue;
+}
+
+h1, h2 {
+	font-family: 'Pacifico', cursive;
+	color: white;
+}
+
+h1 {
+	font-size: 7rem;
+	&::after {
+		content: "";
+		position: absolute;
+		height: 500px;
+		width: 500px;
+		border-radius: 50%;
+		top: -250px;
+		left: -250px;
+		background: yellow;
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		height: 200px;
+		width: 200px;
+		border-radius: 50%;
+		background: white;
+		top: -75px;
+		right: -25px;
+	}
+	&::before, &::after {
+		@media (max-width: 800px) {
+			display: none;
+		}
+	}
+}
+
+h2 {
+	font-size: 3.5rem;
+	&::before, &::after {
+		content: "";
+		position: absolute;
+		height: 200px;
+		width: 200px;
+		border-radius: 50%;
+		background: white;
+	}
+	&::before {
+		top: -60px;
+		right: 60px;
+	}
+	&::after {
+		top: -100px;
+		right: 175px;
+	}
+	&::before, &::after {
+		@media (max-width: 800px) {
+			display: none;
+		}
+	}
+}
+
+#mapid h2 {
+	display:none;
+}
+
+h3 {
+	font-size: 2rem;
+}
+
+p, span, button, select, li, label, div {
+	font-size: 1.6rem;
+	font-family: 'Oswald', sans-serif;
+	// color: white;
+}
+
+.instructions {
+	width: 300px;
+	margin: 0 auto;
+	ol {
+		list-style: inside;
+		padding: 0;
+		list-style-type: decimal;
+		text-align: left;
+	}
+	select, button {
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+		background: white;
+		border: none;
+		border-radius: 5px;
+	}
 }
 
 .wrapper {
@@ -29,8 +122,24 @@ body {
 }
 
 .weather {
+	margin: 20px auto;
 	display: flex;
 	justify-content: space-around;
+	p, span {
+		margin: 0;
+		font-size: 2.5rem;
+	}
+}
+
+.infoDisplay {
+	display: none;
+}
+
+.getInfo {
+	a {
+		text-decoration: none;
+		color: black;
+	}
 }
 
 footer {
@@ -42,31 +151,4 @@ footer {
 		margin: 0;
 		text-decoration: none;
 	}
-}
-
-h1, h2 {
-	font-family: 'Pacifico', cursive;
-	color: white;
-}
-
-h1 {
-	font-size: 7rem;
-}
-
-h2 {
-	font-size: 3.5rem;
-}
-
-p, span, button, select, li, label, a {
-	font-size: 1.6rem;
-}
-
-li p {
-	margin: 0;
-}
-
-ol {
-	list-style: inside;
-	padding: 0;
-	list-style-type: decimal;
 }

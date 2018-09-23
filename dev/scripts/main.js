@@ -43,28 +43,35 @@ app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
 		const timeOfRun = $('#timeOfRun').val();
 		const currentTemp = Math.floor(data.currently.temperature);
 		const currentFeelsLike = Math.floor(data.currently.apparentTemperature);
+		const currentSummary = data.currently.summary;
 		const oneHourTemp = Math.floor(data.hourly.data[1].apparentTemperature);
 		const oneHourFeelsLike = Math.floor(data.hourly.data[1].temperature);
+		const oneHourSummary = data.hourly.data[1].summary;
 		const twoHourTemp = Math.floor(data.hourly.data[2].apparentTemperature);
 		const twoHourFeelsLike = Math.floor(data.hourly.data[2].temperature);
-		const degrees = '&deg;C';
+		const twoHourSummary = data.hourly.data[2].summary;
 		const displayTemp = $('.temp span');
 		const displayFeelsLike = $('.feelsLike span');
+		const displaySummary = $('.summary span');
 		if (timeOfRun === 'now') {
-			displayTemp.append(`${currentTemp} ${degrees}`);
-			displayFeelsLike.append(`${currentFeelsLike} ${degrees}`);
+			displayTemp.append(currentTemp);
+			displayFeelsLike.append(currentFeelsLike);
+			displaySummary.append(currentSummary);
 		} else if (timeOfRun === '1hour') {
-			displayTemp.append(`${oneHourTemp} ${degrees}`);
-			displayFeelsLike.append(`${oneHourFeelsLike} ${degrees}`);
+			displayTemp.append(oneHourTemp);
+			displayFeelsLike.append(oneHourFeelsLike);
+			displaySummary.append(oneHourSummary);
 		} else if (timeOfRun === '2hour') {
-			displayTemp.append(`${twoHourTemp} ${degrees}`);
-			displayFeelsLike.append(`${twoHourFeelsLike} ${degrees}`);
+			displayTemp.append(twoHourTemp);
+			displayFeelsLike.append(twoHourFeelsLike);
+			displaySummary.append(twoHourSummary);
 		};
 	});
 };
 
 app.fetchCoordinates = function(){
 	$('.getInfo').on('click', function(){
+		$('.infoDisplay').css('display', 'block');
 		navigator.geolocation.getCurrentPosition(function(position){
 			const lat = position.coords.latitude;
 			const lng = position.coords.longitude;
