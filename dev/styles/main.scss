@@ -8,6 +8,12 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 // font-family: 'Pacifico', cursive;
 // font-family: 'Oswald', sans-serif;
 
+.wrapper {
+	max-width: 1200px;
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
+}
 
 html {
 	font-size: 62.5%;
@@ -39,10 +45,10 @@ h1 {
 		position: absolute;
 		height: 200px;
 		width: 200px;
-		border-radius: 50%;
+		border-radius: 0 0 50% 50%;
 		background: white;
 		top: -75px;
-		right: -25px;
+		right: 0;
 	}
 	&::before, &::after {
 		@media (max-width: 800px) {
@@ -56,28 +62,26 @@ h2 {
 	&::before, &::after {
 		content: "";
 		position: absolute;
-		height: 200px;
-		width: 200px;
 		border-radius: 50%;
 		background: white;
 	}
 	&::before {
+		height: 200px;
+		width: 150px;
 		top: -60px;
-		right: 60px;
+		right: 125px;
 	}
 	&::after {
+		height: 175px;
+		width: 200px;
 		top: -100px;
-		right: 175px;
+		right: 180px;
 	}
 	&::before, &::after {
 		@media (max-width: 800px) {
 			display: none;
 		}
 	}
-}
-
-#mapid h2 {
-	display:none;
 }
 
 h3 {
@@ -106,19 +110,16 @@ p, span, button, select, li, label, div {
 		background: white;
 		border: none;
 		border-radius: 5px;
+		text-align-last: center;
 	}
-}
-
-.wrapper {
-	max-width: 1200px;
-	width: 95%;
-	margin: 0 auto;
-	text-align: center;
 }
 
 #mapid{
 	height: 500px;
 	width: 100%;
+	h2 {
+		display: none;
+	}
 }
 
 .weather {
@@ -145,7 +146,13 @@ p, span, button, select, li, label, div {
 footer {
 	background-color: black;
 	padding: 20px;
-	margin-top: 100px;
+	margin-top: 30px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	@media (max-width: 768px) {
+		position: static;
+	}
 	p, a {
 		color: white;
 		margin: 0;

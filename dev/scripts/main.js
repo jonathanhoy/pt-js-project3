@@ -9,7 +9,7 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 	var home = L.marker([lat, lng]).bindPopup('You are here / Starting Point').addTo(mymap);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam9uYXRoYW5ob3kiLCJhIjoiY2psOXNtN29tMGVzNDNrbzV6MDdkajZnbyJ9.uM-tD0Q7WPAZUdT_0y9zqg', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		maxZoom: 18,
+		maxZoom: 15,
 		minZoom: 13,
 		center: latlng,
 		id: 'mapbox.streets',
@@ -28,7 +28,18 @@ app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 		  waypoints: [
 		    L.latLng(lat, lng),
 		    L.latLng(endRoute[0], endRoute[1])
-		  ]
+		  ],
+		  lineOptions: {
+	      styles: [{color: 'salmon', opacity: 1, weight: 5}]
+		  },
+		  showAlternatives: true,
+		  altLineOptions: {
+		      styles: [
+		          {color: 'red', opacity: 0.15, weight: 9},
+		          {color: 'white', opacity: 0.8, weight: 6},
+		          {color: 'blue', opacity: 0.5, weight: 2}
+		      ]
+		  }
 		}).addTo(mymap);
 	});
 };
@@ -72,10 +83,10 @@ app.fetchWeather = function(lat = 43.6532, lng = -79.3832){
 app.fetchCoordinates = function(){
 	$('.getInfo').on('click', function(){
 		$('.infoDisplay').css('display', 'block');
+		$('footer').css('position', 'static');
 		navigator.geolocation.getCurrentPosition(function(position){
 			const lat = position.coords.latitude;
 			const lng = position.coords.longitude;
-			console.log(position)
 			app.fetchMap(lat, lng);
 			app.fetchWeather(lat, lng);
 		});
