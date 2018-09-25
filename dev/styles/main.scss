@@ -114,12 +114,17 @@ p, span, button, select, li, label, div {
 	}
 }
 
-#mapid{
+#mapid {
 	height: 500px;
 	width: 100%;
 	h2 {
 		display: none;
 	}
+}
+
+#map {
+	height: 500px;
+	width: 100%;
 }
 
 .weather {

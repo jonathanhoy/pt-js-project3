@@ -222,6 +222,10 @@ p, span, button, select, li, label, div {
   #mapid h2 {
     display: none; }
 
+#map {
+  height: 500px;
+  width: 100%; }
+
 .weather {
   margin: 20px auto;
   display: -webkit-box;

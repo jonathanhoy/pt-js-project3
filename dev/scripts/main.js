@@ -2,6 +2,8 @@ const app = {};
 
 app.apiKeyMapbox = 'pk.eyJ1Ijoiam9uYXRoYW5ob3kiLCJhIjoiY2psOXNtN29tMGVzNDNrbzV6MDdkajZnbyJ9.uM-tD0Q7WPAZUdT_0y9zqg';
 app.apiKeyDarkSky = 'aabc3958afb1ab39dcbe55a9d3801b80';
+app.apiKeyGoogleMaps = 'AIzaSyAEuwxLLRFCNY0GKYlqpwKwSWGCR-WwwO8';
+app.apiKeyGoogleMapsRoutes = 'AIzaSyCPN4SRpeXAD-a5Tk8bIpczrYgueZbCqYo';
 
 app.fetchMap = function(lat = 43.6532, lng = -79.3832){
 	var mymap = L.map('mapid').setView([lat, lng], 14);
